@@ -1,0 +1,54 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class Test{
+
+   private static JFrame frame;
+   private static JPanel mypanel;
+   private JButton button1;
+   private JButton button2;
+   public Test(){
+
+  mypanel=new JPanel();
+  button1=new JButton("按钮1");
+  button2=new JButton("按钮2");
+
+  simpleListener ourListener=new simpleListener();
+
+  button1.addActionListener(ourListener);
+  button2.addActionListener(ourListener);
+
+  mypanel.add(button1);
+  mypanel.add(button2);
+}
+
+private class simpleListener implements ActionListener{
+public void actionPerformed(ActionEvent e){
+String buttonName=e.getActionCommand();
+if(buttonName.equals("按钮1")){
+JOptionPane.showMessageDialog(frame,"按钮1被点击");
+}
+else if(buttonName.equals("按钮2")){
+JOptionPane.showMessageDialog(null,"按钮2被点击");
+}
+else{
+JOptionPane.showMessageDialog(frame,"unknown event");
+}
+}
+}
+
+public static void main(String [] args){
+Test gui=new Test();
+frame=new JFrame("Test");
+
+frame.addWindowListener(new WindowAdapter(){
+public void windowClosing(WindowEvent e){
+System.exit(0);  }  }  );
+
+frame.getContentPane().add(mypanel);
+frame.pack();
+frame.setVisible(true);
+
+}
+}
