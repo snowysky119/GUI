@@ -14,9 +14,9 @@ public class Test{
   button1=new JButton("按钮1");
   button2=new JButton("按钮2");
 
-  simpleListener ourListener=new simpleListener();
+  simpleListener ourListener=new simpleListener(); 
 
-  button1.addActionListener(ourListener);
+  button1.addActionListener(ourListener);   //注册监听类
   button2.addActionListener(ourListener);
 
   mypanel.add(button1);
@@ -25,7 +25,7 @@ public class Test{
 
 private class simpleListener implements ActionListener{
 public void actionPerformed(ActionEvent e){
-String buttonName=e.getActionCommand();
+String buttonName=e.getActionCommand();  //获取点击的是哪个按钮getActioncommand和getsource是有区别的。
 if(buttonName.equals("按钮1")){
 JOptionPane.showMessageDialog(frame,"按钮1被点击");
 }
@@ -42,12 +42,12 @@ public static void main(String [] args){
 Test gui=new Test();
 frame=new JFrame("Test");
 
-frame.addWindowListener(new WindowAdapter(){
+frame.addWindowListener(new WindowAdapter(){       //功能和setDefaultCloseOption(JFrame.EXIT_ON_CLOSE);是一样的。
 public void windowClosing(WindowEvent e){
 System.exit(0);  }  }  );
 
 frame.getContentPane().add(mypanel);
-frame.pack();
+frame.pack();    //使窗口的大小适合组件。
 frame.setVisible(true);
 
 }
